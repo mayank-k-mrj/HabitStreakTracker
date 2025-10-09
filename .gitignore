@@ -1,0 +1,26 @@
+# Ignore local application properties.
+# THIS IS WHERE YOUR PASSWORDS AND API KEYS ARE STORED.
+application.properties
+
+# Ignore other environment-specific property files.
+application-*.properties
+
+# Ignore environment variable files.
+.env
+
+# Log files can sometimes contain sensitive operational data.
+*.log
+
+# Build folders and artifacts.
+/target/
+/build/
+*.jar
+*.war
+
+# IDE and OS files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.DS_Store

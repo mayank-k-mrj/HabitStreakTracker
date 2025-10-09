@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Habits - Sign In</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<style>
+    /* General Body Styles */
+body, html {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F0F7FF;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Main container for the form card */
+.page-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* The main card for the form */
+.form-card {
+    background-color: white;
+    width: 100%;
+    max-width: 28rem; /* 448px */
+    padding: 2.5rem; /* 40px */
+    border-radius: 1rem; /* 16px */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Header section of the card */
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem; /* 32px */
+}
+
+.main-title {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 700;
+    color: #1D3557;
+    margin: 0;
+}
+
+.subtitle {
+    color: #6B7280; /* gray-500 */
+    margin-top: 0.5rem; /* 8px */
+}
+
+/* Error Message Style */
+.error-message {
+    margin-bottom: 1.5rem; /* Add some space below the error */
+    padding: 0.75rem 1rem;
+    background-color: #FEE2E2; /* Red 100 */
+    color: #B91C1C; /* Red 700 */
+    border: 1px solid #FCA5A5; /* Red 300 */
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Form Styles */
+.form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+}
+
+.form-field {
+    width: 100%;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    color: #374151; /* gray-700 */
+    margin-bottom: 0.25rem; /* 4px */
+}
+
+.field-input {
+    margin-top: 0.25rem; /* 4px */
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem; /* 12px 16px */
+    background-color: #F9FAFB; /* gray-50 */
+    border: 1px solid #D1D5DB; /* gray-300 */
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.field-input::placeholder {
+    color: #9CA3AF; /* gray-400 */
+}
+
+.field-input:focus {
+    outline: none;
+    border-color: #457B9D;
+    box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
+}
+
+/* Submit Button Styles */
+.submit-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    color: white;
+    background-image: linear-gradient(90deg, #FF8A65, #FF5252);
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    opacity: 0.9;
+}
+
+/* Footer section of the card */
+.card-footer {
+    margin-top: 2rem; /* 32px */
+    font-size: 0.875rem; /* 14px */
+    text-align: center;
+    color: #4B5563; /* gray-600 */
+}
+
+.navigation-link {
+    font-weight: 500;
+    color: #457B9D;
+    text-decoration: none;
+}
+
+.navigation-link:hover {
+    color: #1D3557;
+}
+
+</style>
+
+<main class="page-container">
+    <div class="form-card">
+
+        <header class="card-header">
+            <h1 class="main-title">Welcome Back!</h1>
+            <p class="subtitle">Sign in to continue your journey.</p>
+        </header>
+
+        <!-- Error message will be displayed here if login fails -->
+        <div id="errorMessageContainer"></div>
+
+        <!--
+            ACTION is set to "/login" - The endpoint Spring Security handles.
+            METHOD is "POST" - The required HTTP method.
+        -->
+        <form class="form-body" action="/login" method="POST">
+
+            <!--
+                NAME is "username" - This is the default parameter name Spring Security expects.
+            -->
+            <div class="form-field">
+                <label for="username" class="field-label">Email or Username</label>
+                <input type="text" id="username" name="username" placeholder="you@example.com" required class="field-input">
+            </div>
+
+            <!--
+                NAME is "password" - The default parameter name for the password.
+            -->
+            <div class="form-field">
+                <label for="password" class="field-label">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required class="field-input">
+            </div>
+
+            <div class="form-field">
+                <button type="submit" class="submit-button">
+                    Sign In
+                </button>
+            </div>
+
+        </form>
+
+        <footer class="card-footer">
+            <p>
+                Don't have an account?
+                <!-- This link should point to your signup page -->
+                <a href="/signup.html" class="navigation-link">Sign up</a>
+            </p>
+        </footer>
+
+    </div>
+</main>
+</body>
+</html>
+

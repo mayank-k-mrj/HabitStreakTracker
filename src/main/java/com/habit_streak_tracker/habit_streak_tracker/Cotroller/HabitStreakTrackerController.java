@@ -58,12 +58,11 @@ public class HabitStreakTrackerController {
         return habitsServices.getHabits(username);
     }
 
+    //here I am creating habits
     @PostMapping("/habits")
     public ResponseEntity<String> createNewHabit(@RequestBody HabitCreationRequest request, Principal principal) {
-        // 1. Get the username of the logged-in user from Spring Security
         String username = principal.getName();
 
-        // 2. Call the new, correct service to create the habit
         habitsServices.createHabit(username, request);
 
         return ResponseEntity.ok("Habit '" + request.name() + "' created successfully for user: " + username);
@@ -102,6 +101,7 @@ public class HabitStreakTrackerController {
         return streakService.findAllStreaks(id);
     }
 
+    //Here I am completing streaks
     @PostMapping("habits/{habit}/compstreak")
     public ResponseEntity<String> compHabit(@PathVariable Long habit){
         streakService.markHabitsCompleted(habit);

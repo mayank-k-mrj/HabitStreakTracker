@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Habits - Sign Up</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+    /* General Body Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F0F7FF;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Main container for the signup card */
+.signup-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* The main card for the signup form */
+.signup-card {
+    background-color: white;
+    width: 100%;
+    max-width: 28rem; /* 448px */
+    padding: 2.5rem; /* 40px */
+    border-radius: 1rem; /* 16px */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Header section of the card */
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem; /* 32px */
+}
+
+.main-title {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 700;
+    color: #1D3557;
+    margin: 0;
+}
+
+.subtitle {
+    color: #6B7280; /* gray-500 */
+    margin-top: 0.5rem; /* 8px */
+}
+
+/* Form Styles */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+}
+
+.form-field {
+    width: 100%;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    color: #374151; /* gray-700 */
+    margin-bottom: 0.25rem; /* 4px */
+}
+
+.field-input {
+    margin-top: 0.25rem; /* 4px */
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem; /* 12px 16px */
+    background-color: #F9FAFB; /* gray-50 */
+    border: 1px solid #D1D5DB; /* gray-300 */
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.field-input::placeholder {
+    color: #9CA3AF; /* gray-400 */
+}
+
+.field-input:focus {
+    outline: none;
+    border-color: #457B9D;
+    box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
+}
+
+/* Submit Button Styles */
+.submit-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    color: white;
+    background-image: linear-gradient(90deg, #FF8A65, #FF5252);
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    opacity: 0.9;
+}
+
+/* Footer section of the card */
+.card-footer {
+    margin-top: 2rem; /* 32px */
+    font-size: 0.875rem; /* 14px */
+    text-align: center;
+    color: #4B5563; /* gray-600 */
+}
+
+.login-link {
+    font-weight: 500;
+    color: #457B9D;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    color: #1D3557;
+}
+
+</style>
+
+    <main class="signup-container">
+        <!-- The main card for the signup form -->
+        <div class="signup-card">
+            
+            <!-- Header Section with Title and Subtitle -->
+            <header class="card-header">
+                <h1 class="main-title">Ignite Habits</h1>
+                <p class="subtitle">Create your account to start building better habits.</p>
+            </header>
+
+            <!-- Signup Form -->
+            <form class="signup-form" action="#" method="POST">
+                
+                <!-- Full Name Input Field -->
+                <div class="form-field">
+                    <label for="fullname" class="field-label">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="ABC" required class="field-input">
+                </div>
+
+                <!-- Email Input Field -->
+                <div class="form-field">
+                    <label for="email" class="field-label">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="abc@example.com" required class="field-input">
+                </div>
+
+                <!-- Password Input Field -->
+                <div class="form-field">
+                    <label for="password" class="field-label">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required class="field-input">
+                </div>
+                 
+                <!-- Submit Button -->
+                <div class="form-field">
+                    <button type="submit" class="submit-button">
+                        Create Account
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Footer link to log in -->
+            <footer class="card-footer">
+                <p>
+                    Already have an account?
+                    <a href="#" class="login-link">Log in</a>
+                </p>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Any future custom JavaScript can be added here -->
+</body>
+</html>
+

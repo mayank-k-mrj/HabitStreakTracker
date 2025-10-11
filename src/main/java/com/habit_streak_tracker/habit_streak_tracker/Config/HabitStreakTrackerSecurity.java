@@ -38,10 +38,17 @@ public class HabitStreakTrackerSecurity {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/hst/signup").permitAll()
+                        .requestMatchers("/hst/signup", "/signin.html", "signup.html", "/css/**", "/js/**").permitAll()
                         .anyRequest().authenticated())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .httpBasic(withDefaults());
+                .formLogin(form -> form
+                        // 1. Specify the URL of your custom login page
+                        .loginPage("/signin.html")
+                        // 2. Specify the URL where the login form will be POSTed to
+                        .loginProcessingUrl("/login")
+                        // 3. Specify the page to go to after a successful login
+                        .defaultSuccessUrl("/index.html", true)
+                        // 4. Specify the page to go to after a failed login
+                        .failureUrl("/signin.html?error=true"));
 
         return http.build();
     }

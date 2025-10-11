@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/hst")
+@CrossOrigin(origins = "http://localhost:63342")
 public class HabitStreakTrackerController {
 
     //Here are some endpoints for signup and signin
@@ -52,10 +54,15 @@ public class HabitStreakTrackerController {
     private StreakService streakService;
 
     //Fetching All habits
-    @GetMapping("habits/{user}/userhabits")
+    @GetMapping("/habits/{user}/userhabits")
     public List<HabitsEntity> getAllStreaks(Principal principal){
         String username = principal.getName();
         return habitsServices.getHabits(username);
+    }
+
+    @GetMapping("/habits/{habit_id}/habitsbyid")
+    public Optional<HabitsEntity> getHabitsById(@PathVariable Long habit_id){
+        return habitsServices.findHabitsByHabitId(habit_id);
     }
 
     //here I am creating habits
@@ -68,8 +75,13 @@ public class HabitStreakTrackerController {
         return ResponseEntity.ok("Habit '" + request.name() + "' created successfully for user: " + username);
     }
 
+    @GetMapping("/user")
+    public String getUser(Principal principal){
+        return principal.getName();
+    }
+
     //Updating Name
-    @PutMapping("habits/{id}/name")
+    @PutMapping("/habits/{id}/name")
     public ResponseEntity<String> updateName(@PathVariable Long id, @RequestBody HabitCreationRequest name){
         habitsServices.updateNameById(id, name);
 
@@ -77,7 +89,7 @@ public class HabitStreakTrackerController {
     }
 
     //Updating Description
-    @PutMapping("habits/{id}/desc")
+    @PutMapping("/habits/{id}/desc")
     public ResponseEntity<String> updatingDesc(@PathVariable Long id, @RequestBody HabitCreationRequest desc){
         habitsServices.updateDescById(id, desc);
 
@@ -85,7 +97,7 @@ public class HabitStreakTrackerController {
     }
 
     //Updating Frequency
-    @PutMapping("habits/{id}/freq")
+    @PutMapping("/habits/{id}/freq")
     public ResponseEntity<String> updatingFreq(@PathVariable Long id, @RequestBody HabitCreationRequest freq){
         habitsServices.updatingFreqById(id, freq);
 
@@ -96,13 +108,13 @@ public class HabitStreakTrackerController {
     //Here are some endpoints to get the streak data from the user.
 
     //Fetching currentStreak
-    @GetMapping("habits/{id}/streaks")
+    @GetMapping("/habits/{id}/streaks")
     public StreakDTO getAllStreaks(@PathVariable Long id){
         return streakService.findAllStreaks(id);
     }
 
     //Here I am completing streaks
-    @PostMapping("habits/{habit}/compstreak")
+    @PostMapping("/habits/{habit}/compstreak")
     public ResponseEntity<String> compHabit(@PathVariable Long habit){
         streakService.markHabitsCompleted(habit);
         return ResponseEntity.ok("Completion Done");

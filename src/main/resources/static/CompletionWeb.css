@@ -1,0 +1,158 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F0F7FF;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.page-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.habit-details-card {
+    background-color: white;
+    width: 100%;
+    max-width: 30rem;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1.5rem;
+}
+
+.habit-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1D3557;
+    margin: 0;
+}
+
+.habit-frequency-badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background-color: #E0E7FF;
+    color: #4338CA;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.card-body {
+    margin-bottom: 2rem;
+}
+
+.habit-description {
+    color: #4B5563;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.streak-stats {
+    display: flex;
+    justify-content: space-around;
+    background-color: #F9FAFB;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.streak-item {
+    text-align: center;
+}
+
+.streak-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1D3557;
+}
+
+.streak-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+
+.streak-label i {
+    margin-right: 0.25rem;
+    color: #F59E0B;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 0.9rem;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #374151;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #4B5563;
+}
+
+.card-actions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.complete-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #2ECC71;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.complete-button:hover {
+    background-color: #27AE60;
+}
+
+.complete-button:active {
+    transform: scale(0.98);
+}
+
+.navigation-link {
+    font-weight: 500;
+    color: #457B9D;
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
+.navigation-link:hover {
+    color: #1D3557;
+}
+

@@ -13,128 +13,129 @@
 </head>
 <body>
 
-    <div class="app-shell">
-        <header class="top-nav">
-            <div class="logo">
-                Ignite Habits
-            </div>
-            <div class="search-bar">
+<div class="app-shell">
+    <header class="top-nav">
+        <div class="logo">
+            Ignite Habits
+        </div>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Recess">
+        </div>
+        <nav class="main-menu">
+            <a href="#" class="menu-link active">Home</a>
+            <a href="#" class="menu-link">Analytics</a>
+            <a href="#" class="menu-link">Profile</a>
+        </nav>
+        <div class="user-profile">
+            <img src="https://i.pravatar.cc/40?img=1" alt="User Avatar">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Dashboard</h1>
+            <div class="header-controls">
+                <button class="reset-button">
+                    <i class="fa-solid fa-rotate-right"></i> Reset
+                </button>
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Recess">
             </div>
-            <nav class="main-menu">
-                <a href="#" class="menu-link active">Home</a>
-                <a href="#" class="menu-link">Analytics</a>
-                <a href="#" class="menu-link">Profile</a>
-            </nav>
-            <div class="user-profile">
-                <img src="https://i.pravatar.cc/40?img=1" alt="User Avatar">
-            </div>
-        </header>
+        </div>
 
-        <main class="main-content">
-            <div class="page-header">
-                <h1>Dashboard</h1>
-                <div class="header-controls">
-                    <button class="reset-button">
-                        <i class="fa-solid fa-rotate-right"></i> Reset
-                    </button>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="main-grid">
+            <section class="card streak-card">
+                <p class="card-title">Current Streak:</p>
+                <p class="streak-days">15 Days <i class="fa-solid fa-fire-flame-curved"></i></p>
+                <p class="streak-motto">Keep it up!</p>
+                <p class="streak-details">Daset tan twe litorpont sesst sised.</p>
+                <div class="progress-circle">
+                    <i class="fa-solid fa-check"></i>
                 </div>
-            </div>
+            </section>
 
-            <div class="main-grid">
-                <section class="card streak-card">
-                    <p class="card-title">Current Streak:</p>
-                    <p class="streak-days">15 Days <i class="fa-solid fa-fire-flame-curved"></i></p>
-                    <p class="streak-motto">Keep it up!</p>
-                    <p class="streak-details">Daset tan twe litorpont sesst sised.</p>
-                    <div class="progress-circle">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                </section>
+            <section class="habits-grid">
+                <div class="habit-card green">
+                    <i class="fa-solid fa-book-open"></i>
+                    <p class="habit-name" id="habit-name1">--------------</p>
+                    <span class="habit-detail" id="habit-detail1">--------------</span>
+                    <p class="habit-streak" id="habit-streak1">--------------</p>
+                </div>
+                <div class="habit-card blue">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    <p class="habit-name" id="habit-name2">--------------</p>
+                    <span class="habit-detail" id="habit-detail2">--------------</span>
+                    <p class="habit-streak" id="habit-streak2">--------------</p>
+                </div>
+                <div class="habit-card purple">
+                    <i class="fa-solid fa-music"></i>
+                    <p class="habit-name" id="habit-name3">--------------</p>
+                    <span class="habit-detail" id="habit-detail3">--------------</span>
+                    <p class="habit-streak" id="habit-streak3">--------------</p>
+                </div>
+                <div class="habit-card teal">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <p class="habit-name" id="habit-name4">--------------</p>
+                    <span class="habit-detail" id="habit-detail4">--------------</span>
+                    <p class="habit-streak" id="habit-streak4">--------------</p>
+                </div>
+                <div class="habit-card indigo">
+                    <i class="fa-solid fa-droplet"></i>
+                    <p class="habit-name" id="habit-name5">--------------</p>
+                    <span class="habit-detail" id="habit-detail5">--------------</span>
+                    <p class="habit-streak" id="habit-streak5">--------------</p>
+                </div>
+                <div class="habit-card orange">
+                    <i class="fa-solid fa-users"></i>
+                    <p class="habit-name" id="habit-name6">--------------</p>
+                    <span class="habit-detail" id="habit-detail6">--------------</span>
+                    <p class="habit-streak" id="habit-streak6">--------------</p>
+                </div>
+            </section>
 
-                <section class="habits-grid">
-                    <div class="habit-card green">
-                        <i class="fa-solid fa-book-open"></i>
-                        <p class="habit-name">Read 20 pages</p>
-                        <span class="habit-detail">Serwe selese</span>
-                        <p class="habit-streak">7-Day Streak</p>
-                    </div>
-                     <div class="habit-card blue">
-                        <i class="fa-solid fa-dumbbell"></i>
-                        <p class="habit-name">Exercise 20 min</p>
-                        <span class="habit-detail">Serwe selese</span>
-                        <p class="habit-streak">7-Day Streak</p>
-                    </div>
-                     <div class="habit-card purple">
-                        <i class="fa-solid fa-music"></i>
-                        <p class="habit-name">Mesica 30 VA</p>
-                        <span class="habit-detail">SNNV selese</span>
-                        <p class="habit-streak">7-Day Streak</p>
-                    </div>
-                     <div class="habit-card teal">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <p class="habit-name">Drink 8 glasses</p>
-                        <span class="habit-detail">Strus senek</span>
-                        <p class="habit-streak">7-Day Streak</p>
-                    </div>
-                     <div class="habit-card indigo">
-                        <i class="fa-solid fa-droplet"></i>
-                        <p class="habit-name">Drink 8 glaces</p>
-                        <span class="habit-detail">Sbsrs seran</span>
-                        <p class="habit-streak">7-Day Streak</p>
-                    </div>
-                     <div class="habit-card orange">
-                        <i class="fa-solid fa-users"></i>
-                        <p class="habit-name">Mesiiaan VA</p>
-                        <span class="habit-detail">Storb sonng</span>
-                        <p class="habit-streak">7-Day Streak</p>
-                    </div>
-                </section>
+            <aside class="side-panel">
+                <div class="card week-tracker">
+                    <div class="day active">S</div>
+                    <div class="day">M</div>
+                    <div class="day">T</div>
+                    <div class="day">W</div>
+                    <div class="day">T</div>
+                    <div class="day">F</div>
+                    <div class="day">S</div>
+                </div>
+                <div class="card new-habit-prompt">
+                    <h3>New Habit</h3>
+                    <button class="add-button">Add New Habit</button>
+                    <p class="prompt-text">Hydrate & Conquer!</p>
+                    <p class="prompt-subtext">Your body will thank you!</p>
+                </div>
+            </aside>
+        </div>
 
-                <aside class="side-panel">
-                    <div class="card week-tracker">
-                        <div class="day active">S</div>
-                        <div class="day">M</div>
-                        <div class="day">T</div>
-                        <div class="day">W</div>
-                        <div class="day">T</div>
-                        <div class="day">F</div>
-                        <div class="day">S</div>
-                    </div>
-                    <div class="card new-habit-prompt">
-                        <h3>New Habit</h3>
-                        <button class="add-button">Add New Habit</button>
-                        <p class="prompt-text">Hydrate & Conquer!</p>
-                        <p class="prompt-subtext">Your body will thank you!</p>
-                    </div>
-                </aside>
-            </div>
+        <div class="lower-deck">
+            <section class="card your-habits-list">
+                <div class="card-header">
+                    <h2>Your Habits</h2>
+                    <a href="#" class="view-all-link">View All</a>
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-book-open"></i> Read 20 Pages</li>
+                    <li><i class="fa-solid fa-utensils"></i> Meal 20 Pages</li>
+                    <li><i class="fa-solid fa-bed"></i> Meak 3n Bitzes</li>
+                    <li><i class="fa-solid fa-person-running"></i> l-lex-lo-lour</li>
+                </ul>
+            </section>
 
-            <div class="lower-deck">
-                <section class="card your-habits-list">
-                    <div class="card-header">
-                        <h2>Your Habits</h2>
-                        <a href="#" class="view-all-link">View All</a>
-                    </div>
-                    <ul>
-                        <li><i class="fa-solid fa-book-open"></i> Read 20 Pages</li>
-                        <li><i class="fa-solid fa-utensils"></i> Meal 20 Pages</li>
-                        <li><i class="fa-solid fa-bed"></i> Meak 3n Bitzes</li>
-                        <li><i class="fa-solid fa-person-running"></i> l-lex-lo-lour</li>
-                    </ul>
-                </section>
-
-                <section class="card progress-graph">
-                     <div class="card-header">
-                        <h2>Progress Over Time</h2>
-                    </div>
-                    <img src="https://i.imgur.com/uGPlKqR.png" alt="A line graph showing progress over time">
-                </section>
-            </div>
-        </main>
-    </div>
+            <section class="card progress-graph">
+                <div class="card-header">
+                    <h2>Progress Over Time</h2>
+                </div>
+                <img src="https://i.imgur.com/uGPlKqR.png" alt="A line graph showing progress over time">
+            </section>
+        </div>
+    </main>
+</div>
 
 </body>
+<script src="index.js"></script>
 </html>

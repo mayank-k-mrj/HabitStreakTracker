@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Habits - Complete Habit</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="CompletionWeb.css">
+</head>
+<body>
+
+<main class="page-container">
+    <!-- The main card for displaying habit details -->
+    <div class="habit-details-card">
+
+        <!-- Header Section with Habit Name -->
+        <header class="card-header">
+            <h1 class="habit-title">Read for 20 minutes</h1>
+            <p class="habit-frequency-badge">Daily</p>
+        </header>
+
+        <!-- Body of the card with details -->
+        <section class="card-body">
+            <p class="habit-description">
+                My goal is to read from a non-fiction book every day to learn something new.
+            </p>
+
+            <!-- Streak statistics -->
+            <div class="streak-stats">
+                <div class="streak-item">
+                    <span class="streak-value">0 Days</span>
+                    <span class="streak-label"><i class="fa-solid fa-fire"></i> Current Streak</span>
+                </div>
+                <div class="streak-item">
+                    <span class="streak-value" id="streak_long">0 Days</span>
+                    <span class="streak-label"><i class="fa-solid fa-trophy"></i> Longest Streak</span>
+                </div>
+            </div>
+
+            <!-- Last completed date -->
+            <div class="info-item">
+                <span class="info-label">Last Completed:</span>
+                <span class="info-value">----------, ----</span>
+            </div>
+        </section>
+
+        <!-- Action area with the complete button -->
+        <footer class="card-actions">
+            <button class="complete-button">
+                <i class="fa-solid fa-check"></i> Mark as Complete
+            </button>
+            <a href="index.html" class="navigation-link">Back to Dashboard</a>
+        </footer>
+
+    </div>
+</main>
+
+<script src="CompletionWeb.js"></script>
+</body>
+</html>

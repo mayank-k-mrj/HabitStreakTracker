@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Habits - Create Habit</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="HabitCreation.css">
+</head>
+<body>
+
+    <main class="page-container">
+        <!-- The main card for the form -->
+        <div class="form-card">
+            
+            <!-- Header Section with Title and Subtitle -->
+            <header class="card-header">
+                <h1 class="main-title">Create a New Habit</h1>
+                <p class="subtitle">Fill in the details to start tracking.</p>
+            </header>
+
+            <!-- Habit Creation Form -->
+            <form class="form-body" action="#" method="POST">
+                
+                <!-- Habit Name Input Field -->
+                <div class="form-field">
+                    <label for="habit-name" class="field-label">Habit Name</label>
+                    <input type="text" id="habit-name" name="habit-name" placeholder="e.g., Read for 20 minutes" required class="field-input">
+                </div>
+
+                <!-- Habit Description Input Field -->
+                <div class="form-field">
+                    <label for="habit-description" class="field-label">Description</label>
+                    <textarea id="habit-description" name="habit-description" placeholder="A short description of your habit" rows="3" class="field-input"></textarea>
+                </div>
+
+                <!-- Habit Frequency Selection -->
+                <div class="form-field">
+                    <label for="habit-frequency" class="field-label">Frequency</label>
+                    <select id="habit-frequency" name="habit-frequency" required class="field-input">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+
+                <!-- Habit Start Date Input Field -->
+                <div class="form-field">
+                    <label for="start-date" class="field-label">Start Date</label>
+                    <input type="date" id="start-date" name="start-date" required class="field-input">
+                </div>
+                 
+                <!-- Submit Button -->
+                <div class="form-field">
+                    <button type="submit" class="submit-button">
+                        Add New Habit
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Footer link to go back -->
+            <footer class="card-footer">
+                <p>
+                    <p class="stat"></p>
+                    <a href="index.html" class="navigation-link">Back to Dashboard</a>
+                </p>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Custom JavaScript -->
+    <script src="script_create_habit.js"></script>
+</body>
+<script src="HabitCreation.js"></script>
+</html>

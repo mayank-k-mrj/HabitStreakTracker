@@ -14,6 +14,7 @@ public class StreakDTO {
         this.id = id;
         this.currentStreak = currentStreak;
         this.longestStreak = longestStreak;
+        this.lastCompletedDate = lastCompleteDate;
         this.habitId = habitId;
     }
 

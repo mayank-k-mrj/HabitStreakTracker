@@ -13,4 +13,5 @@ public interface StreakService {
     Integer findLongestStreak(Long habit);
     Integer findCurrentStreak(Long habit);
     LocalDate findLastCompletedDate(Long habit);
+    Boolean deletehabitById(Long habit_id);
 }

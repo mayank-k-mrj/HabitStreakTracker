@@ -113,10 +113,21 @@ public class HabitStreakTrackerController {
         return streakService.findAllStreaks(id);
     }
 
+    @GetMapping("/habits/{id}/currentStr")
+    public Integer findCurrentStreak(@PathVariable Long id){
+        return  streakService.findCurrentStreak(id);
+    }
+
     //Here I am completing streaks
     @PostMapping("/habits/{habit}/compstreak")
     public ResponseEntity<String> compHabit(@PathVariable Long habit){
         streakService.markHabitsCompleted(habit);
         return ResponseEntity.ok("Completion Done");
+    }
+
+    @DeleteMapping("/habits/{id}/delhabit")
+    public Boolean delById(@PathVariable Long habit_id){
+        streakService.deletehabitById(habit_id);
+        return true;
     }
 }

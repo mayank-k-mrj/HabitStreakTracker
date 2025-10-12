@@ -228,10 +228,6 @@ body {
     color: var(--text-secondary);
     background-color: #f7f7f7;
 }
-.day.active {
-    background-color: var(--accent-blue);
-    color: white;
-}
 
 .new-habit-prompt {
     text-align: center;

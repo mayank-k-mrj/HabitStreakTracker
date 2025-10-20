@@ -12,139 +12,178 @@
 </head>
 <body>
 <style>
-body, html {
-    font-family: 'Poppins', sans-serif;
-    background-color: #F0F7FF;
-    margin: 0;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
+    body, html {
+        font-family: 'Poppins', sans-serif;
+        background-color: #F0F7FF;
+        margin: 0;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
 
-.page-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+    .page-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 
-.form-card {
-    background-color: white;
-    width: 100%;
-    max-width: 28rem;
-    padding: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
+    .form-card {
+        background-color: white;
+        width: 100%;
+        max-width: 28rem;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
 
-.card-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+    .card-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
 
-.main-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: #1D3557;
-    margin: 0;
-}
+    .main-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #1D3557;
+        margin: 0;
+    }
 
-.subtitle {
-    color: #6B7280;
-    margin-top: 0.5rem;
-}
+    .subtitle {
+        color: #6B7280;
+        margin-top: 0.5rem;
+    }
 
-/* Error Message Style */
-.error-message {
-    margin-bottom: 1.5rem;
-    padding: 0.75rem 1rem;
-    background-color: #FEE2E2;
-    color: #B91C1C;
-    border: 1px solid #FCA5A5;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    text-align: center;
-}
+    /* Error Message Style */
+    .error-message {
+        margin-bottom: 1.5rem;
+        padding: 0.75rem 1rem;
+        background-color: #FEE2E2;
+        color: #B91C1C;
+        border: 1px solid #FCA5A5;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        text-align: center;
+    }
 
 
-.form-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
+    .form-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 
-.form-field {
-    width: 100%;
-}
+    .form-field {
+        width: 100%;
+    }
 
-.field-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 0.25rem;
-}
+    .field-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.25rem;
+    }
 
-.field-input {
-    margin-top: 0.25rem;
-    display: block;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background-color: #F9FAFB;
-    border: 1px solid #D1D5DB;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-}
+    .field-input {
+        margin-top: 0.25rem;
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background-color: #F9FAFB;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
+    }
 
-.field-input::placeholder {
-    color: #9CA3AF;
-}
+    .field-input::placeholder {
+        color: #9CA3AF;
+    }
 
-.field-input:focus {
-    outline: none;
-    border-color: #457B9D;
-    box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
-}
+    .field-input:focus {
+        outline: none;
+        border-color: #457B9D;
+        box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
+    }
 
-.submit-button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0.75rem 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    background-image: linear-gradient(90deg, #FF8A65, #FF5252);
-    cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
-}
+    .submit-button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        font-size: 1rem;
+        font-weight: 500;
+        color: white;
+        background-image: linear-gradient(90deg, #FF8A65, #FF5252);
+        cursor: pointer;
+        transition: opacity 0.2s ease-in-out;
+    }
 
-.submit-button:hover {
-    opacity: 0.9;
-}
+    .submit-button:hover {
+        opacity: 0.9;
+    }
 
-.card-footer {
-    margin-top: 2rem;
-    font-size: 0.875rem;
-    text-align: center;
-    color: #4B5563;
-}
+    .card-footer {
+        margin-top: 2rem;
+        font-size: 0.875rem;
+        text-align: center;
+        color: #4B5563;
+    }
 
-.navigation-link {
-    font-weight: 500;
-    color: #457B9D;
-    text-decoration: none;
-}
+    .navigation-link {
+        font-weight: 500;
+        color: #457B9D;
+        text-decoration: none;
+    }
 
-.navigation-link:hover {
-    color: #1D3557;
-}
+    .navigation-link:hover {
+        color: #1D3557;
+    }
+
+    /* --- NEW STYLES FOR GOOGLE BUTTON --- */
+    .or-divider {
+        text-align: center;
+        margin: 1.5rem 0;
+        color: #6B7280;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    .google-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background-color: #4285F4;
+        color: white;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        transition: opacity 0.2s ease-in-out;
+        box-sizing: border-box;
+    }
+
+    .google-btn:hover {
+        opacity: 0.9;
+    }
+
+    .google-btn img {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        background-color: white;
+        padding: 2px;
+        border-radius: 50%;
+    }
+    /* --- END OF NEW STYLES --- */
 
 </style>
 
@@ -178,6 +217,15 @@ body, html {
 
         </form>
 
+        <!-- === NEW GOOGLE LOGIN SECTION === -->
+        <div class="or-divider">OR</div>
+
+        <a href="/oauth2/authorization/google" class="google-btn">
+            <img src="https://developers.google.com/identity/images/g-logo.png" alt="">
+            <span>Sign in with Google</span>
+        </a>
+        <!-- === END OF NEW SECTION === -->
+
         <footer class="card-footer">
             <p>
                 Don't have an account?
@@ -189,4 +237,3 @@ body, html {
 </main>
 </body>
 </html>
-

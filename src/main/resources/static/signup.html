@@ -4,181 +4,207 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ignite Habits - Sign Up</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F0F7FF;
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .signup-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .signup-card {
+            background-color: white;
+            width: 100%;
+            max-width: 28rem;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1D3557;
+            margin: 0;
+        }
+
+        .subtitle {
+            color: #6B7280;
+            margin-top: 0.5rem;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-field {
+            width: 100%;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .field-input {
+            margin-top: 0.25rem;
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: #F9FAFB;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
+
+        .field-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        .field-input:focus {
+            outline: none;
+            border-color: #457B9D;
+            box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
+        }
+
+        .submit-button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            background-image: linear-gradient(90deg, #FF8A65, #FF5252);
+            cursor: pointer;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+
+        .card-footer {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            text-align: center;
+            color: #4B5563;
+        }
+
+        .login-link {
+            font-weight: 500;
+            color: #457B9D;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            color: #1D3557;
+        }
+    </style>
 </head>
 <body>
-<style>
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #F0F7FF;
-    margin: 0;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
 
-.signup-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+<main class="signup-container">
+    <div class="signup-card">
 
-.signup-card {
-    background-color: white;
-    width: 100%;
-    max-width: 28rem;
-    padding: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
+        <header class="card-header">
+            <h1 class="main-title">Ignite Habits</h1>
+            <p class="subtitle">Create your account to start building better habits.</p>
+        </header>
 
-.card-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+        <form class="signup-form" action="#" method="POST">
 
-.main-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: #1D3557;
-    margin: 0;
-}
+            <div class="form-field">
+                <label for="fullname" class="field-label">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="ABC" required class="field-input">
+            </div>
 
-.subtitle {
-    color: #6B7280;
-    margin-top: 0.5rem;
-}
+            <div class="form-field">
+                <label for="email" class="field-label">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="abc@example.com" required class="field-input">
+            </div>
 
+            <div class="form-field">
+                <label for="password" class="field-label">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required class="field-input">
+            </div>
 
-.signup-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
+            <div class="form-field">
+                <button type="submit" class="submit-button">
+                    Create Account
+                </button>
+            </div>
 
-.form-field {
-    width: 100%;
-}
+        </form>
 
-.field-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 0.25rem;
-}
+        <footer class="card-footer">
+            <p>
+                Already have an account?
+                <a href="signin.html" class="login-link">Log in</a>
+            </p>
+        </footer>
 
-.field-input {
-    margin-top: 0.25rem;
-    display: block;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background-color: #F9FAFB;
-    border: 1px solid #D1D5DB;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-}
+    </div>
+</main>
 
-.field-input::placeholder {
-    color: #9CA3AF;
-}
+<script>
+    let url = "http://localhost:8080/hst/signup";
+    let submit = document.querySelector('.submit-button');
+    let name = document.querySelector('#fullname');
+    let email = document.querySelector('#email');
+    let password = document.querySelector('#password');
 
-.field-input:focus {
-    outline: none;
-    border-color: #457B9D;
-    box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
-}
-
-.submit-button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0.75rem 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    background-image: linear-gradient(90deg, #FF8A65, #FF5252);
-    cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
-}
-
-.submit-button:hover {
-    opacity: 0.9;
-}
-
-
-.card-footer {
-    margin-top: 2rem;
-    font-size: 0.875rem;
-    text-align: center;
-    color: #4B5563;
-}
-
-.login-link {
-    font-weight: 500;
-    color: #457B9D;
-    text-decoration: none;
-}
-
-.login-link:hover {
-    color: #1D3557;
-}
-
-</style>
-
-    <main class="signup-container">
-        <div class="signup-card">
-
-            <header class="card-header">
-                <h1 class="main-title">Ignite Habits</h1>
-                <p class="subtitle">Create your account to start building better habits.</p>
-            </header>
-
-            <form class="signup-form" action="#" method="POST">
-
-                <div class="form-field">
-                    <label for="fullname" class="field-label">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="ABC" required class="field-input">
-                </div>
-
-                <div class="form-field">
-                    <label for="email" class="field-label">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="abc@example.com" required class="field-input">
-                </div>
-
-                <div class="form-field">
-                    <label for="password" class="field-label">Password</label>
-                    <input type="password" id="password" name="password" placeholder="••••••••" required class="field-input">
-                </div>
-
-                <div class="form-field">
-                    <button type="submit" class="submit-button">
-                        Create Account
-                    </button>
-                </div>
-
-            </form>
-
-            <footer class="card-footer">
-                <p>
-                    Already have an account?
-                    <a href="signin.html" class="login-link">Log in</a>
-                </p>
-            </footer>
-
-        </div>
-    </main>
-
+    submit.addEventListener("click", async (event) => {
+        event.preventDefault();
+        if (name.value !== "" && email.value !== "" && password.value !== "") {
+            const details = {
+                username: name.value,
+                password: password.value,
+                email: email.value
+            }
+            let sendResponse = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(details)
+            });
+            if (sendResponse.ok) {
+                console.log("Account Created");
+                // Optionally, redirect to the sign-in page after successful signup
+                window.location.href = "signin.html";
+            } else {
+                console.log("Something went wrong");
+            }
+        }
+    });
+</script>
 </body>
-<script src="signup.js"></script>
 </html>
-

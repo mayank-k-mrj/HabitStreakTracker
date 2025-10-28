@@ -21,7 +21,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/hst")
-@CrossOrigin(origins = "http://localhost:63342")
 public class HabitStreakTrackerController {
 
     //Here are some endpoints for signup and signin

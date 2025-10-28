@@ -14,7 +14,7 @@ public class HabitsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long habit_id;
+    private Long habitid;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -48,11 +48,11 @@ public class HabitsEntity {
     }
 
     public Long getId() {
-        return habit_id;
+        return habitid;
     }
 
-    public void setId(Long habit_id) {
-        this.habit_id = habit_id;
+    public void setId(Long habitid) {
+        this.habitid = habitid;
     }
 
     public UsersEntity getUser() {

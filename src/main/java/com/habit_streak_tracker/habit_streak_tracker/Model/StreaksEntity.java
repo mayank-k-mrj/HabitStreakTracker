@@ -23,7 +23,7 @@ public class StreaksEntity {
     private LocalDate lastCompleteDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "habit_id", nullable = false)
+    @JoinColumn(name = "habitid", nullable = false)
     private HabitsEntity habit;
 
     public StreaksEntity(Integer current_streak, Integer longest_streak, LocalDate lastCompleteDate) {

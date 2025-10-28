@@ -1,13 +1,14 @@
 let addhabit = document.querySelector('.add-button');
-let url = "http://localhost:8080/hst/user";
-let url2 = "http://localhost:8080/hst/habits/";
+let url = "/hst/user";
+let url2 = "/hst/habits/";
+let url_getid = "/hst/habits/ids";
+let url_streaks = "/hst/habits/";
+
 let url3 = "/userhabits";
 let activeuser;
 let habitNameElements = document.querySelectorAll('.habit-name');
 let habitStreakElements = document.querySelectorAll('.habit-streak');
 let habitDescElements = document.querySelectorAll('.habit-detail');
-let url_getid = "http://localhost:8080/hst/habits/ids";
-let url_streaks = "http://localhost:8080/hst/habits/";
 let url_str = "/streaks";
 let url_cur_str = "/currentStr";
 const allHabitCards = document.querySelectorAll('.habit-card');
@@ -47,51 +48,67 @@ addhabit.addEventListener("click", () => {
 user();
 
 async function user() {
-    let user = await fetch(url);
-    if (user.ok) {
-        let username = await user.text();
-        activeuser = username;
-        allhabits();
-    }
-    else {
-        console.log("Something went wrong");
+    try {
+        let user = await fetch(url);
+        if (user.ok) {
+            let username = await user.text();
+            activeuser = username;
+            allhabits();
+        } else {
+            console.error("Failed to fetch user. Status:", user.status);
+        }
+    } catch (error) {
+        console.error("Error fetching user:", error);
     }
 }
 
 async function allhabits() {
-    let habits = await fetch(url2 + activeuser + url3);
-    if (habits.ok) {
-        console.log("Data fetched");
-        let names = await habits.json();
-        if (names.length > 0) {
-            for (let i = 0; i < names.length; i++) {
-                if (i >= habitNameElements.length) break;
+    if (!activeuser) {
+        console.error("No active user set. Cannot fetch habits.");
+        return;
+    }
 
-                allHabitCards[i].dataset.habitId = names[i].id;
+    try {
+        let habits = await fetch(url2 + activeuser + url3);
+        if (habits.ok) {
+            console.log("Data fetched");
+            let names = await habits.json();
+            if (names.length > 0) {
+                for (let i = 0; i < names.length; i++) {
+                    if (i >= habitNameElements.length) break;
 
-                habitNameElements[i].innerText = names[i].name;
-                habitDescElements[i].innerText = names[i].description;
+                    allHabitCards[i].dataset.habitId = names[i].id;
 
-                let id = names[i].id;
-                let streak = await fetch(url_streaks + id + url_str);
+                    habitNameElements[i].innerText = names[i].name;
+                    habitDescElements[i].innerText = names[i].description;
 
-                if (streak.ok) {
-                    console.log("Streak Fetched for habit ID:", id);
-                    let streaks = await streak.json();
-                    habitStreakElements[i].innerText = streaks.currentStreak + "- Day Streak";
+                    let id = names[i].id;
+                    try {
+                        let streak = await fetch(url_streaks + id + url_str);
+                        if (streak.ok) {
+                            console.log("Streak Fetched for habit ID:", id);
+                            let streaks = await streak.json();
+                            habitStreakElements[i].innerText = streaks.currentStreak + "- Day Streak";
+                        } else {
+                            console.error("Failed to fetch streak for habit ID:", id, "Status:", streak.status);
+                        }
+                    } catch (error) {
+                        console.error("Error fetching streak for habit ID:", id, error);
+                    }
                 }
             }
+        } else {
+            console.error("Failed to fetch habits. Status:", habits.status);
         }
-    }
-    else {
-        console.log("Something went wrong");
+    } catch (error) {
+        console.error("Error fetching all habits:", error);
     }
 }
 
 allHabitCards.forEach(cards => {
     cards.addEventListener("click", async () => {
         const habitId = cards.dataset.habitId;
-        if(habitId){
+        if (habitId) {
             window.open(`CompletionWeb.html?id=${habitId}`);
         }
     })
@@ -100,15 +117,28 @@ allHabitCards.forEach(cards => {
 allHabitCards.forEach(cards => {
     cards.addEventListener("mouseover", async () => {
         const habitId = cards.dataset.habitId;
-        let CResponse = await fetch(url_streaks + habitId + url_cur_str);
-        if(CResponse.ok){
-            let current = await CResponse.json();
-            streakday.innerText = current;
-        }
-        let DResponse = await fetch(url_streaks + habitId + url_habitid);
-        if(DResponse.ok){
-            let detailsDesc = await DResponse.json();
-            details.innerText = detailsDesc.description;
+        if (!habitId) return; // Don't fetch if there's no habit ID
+
+        try {
+            // Fetch current streak
+            let CResponse = await fetch(url_streaks + habitId + url_cur_str);
+            if (CResponse.ok) {
+                let current = await CResponse.json();
+                streakday.innerText = current;
+            } else {
+                console.error("Failed to fetch current streak on mouseover. Status:", CResponse.status);
+            }
+
+            // Fetch habit details
+            let DResponse = await fetch(url_streaks + habitId + url_habitid);
+            if (DResponse.ok) {
+                let detailsDesc = await DResponse.json();
+                details.innerText = detailsDesc.description;
+            } else {
+                console.error("Failed to fetch habit details on mouseover. Status:", DResponse.status);
+            }
+        } catch (error) {
+            console.error("Error on mouseover data fetch:", error);
         }
     })
 });
@@ -117,5 +147,7 @@ const today = new Date();
 let day = today.getDay();
 console.log(day);
 
-todayDay[day].style.backgroundColor = "#3498DB";
-todayDay[day].style.color = "white";
+if (todayDay[day]) {
+    todayDay[day].style.backgroundColor = "#3498DB";
+    todayDay[day].style.color = "white";
+}

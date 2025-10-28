@@ -141,13 +141,6 @@ public class StreakService_Imp implements StreakService{
 
     @Override
     public Boolean deletehabitById(Long habit_id) {
-        streakEntryRepository.deleteById(habit_id);
-        StreaksEntity streak = streakEntryRepository.findByHabit_Id(habit_id);
-        if(streak == null){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
     }
 }

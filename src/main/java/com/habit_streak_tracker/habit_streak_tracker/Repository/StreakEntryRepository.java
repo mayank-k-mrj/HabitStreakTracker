@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface StreakEntryRepository extends JpaRepository<StreaksEntity, Long> {
     Optional<StreaksEntity> findByHabitId(Long id);
     StreaksEntity findByHabit_Id(Long id);
+    Boolean deleteByHabit_Id(Long id);
 }

@@ -10,6 +10,5 @@ import java.util.Optional;
 public interface HabitsEntryRepository extends JpaRepository<HabitsEntity, Long> {
     List<HabitsEntity> findByUser_Username(String username);
     List<HabitsEntity> findHabitIdByUser_Username(String username);
-
     Optional<HabitsEntity> findAllById(Long habit_id);
 }

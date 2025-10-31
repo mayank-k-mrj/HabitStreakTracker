@@ -42,6 +42,7 @@ interactiveCards.forEach(card => {
 });
 
 addhabit.addEventListener("click", () => {
+    window.close();
     window.open("HabitCreation.html");
 })
 
@@ -109,6 +110,7 @@ allHabitCards.forEach(cards => {
     cards.addEventListener("click", async () => {
         const habitId = cards.dataset.habitId;
         if (habitId) {
+            window.close();
             window.open(`CompletionWeb.html?id=${habitId}`);
         }
     })

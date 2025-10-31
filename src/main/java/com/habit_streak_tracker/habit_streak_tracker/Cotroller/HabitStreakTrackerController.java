@@ -125,8 +125,8 @@ public class HabitStreakTrackerController {
     }
 
     @DeleteMapping("/habits/{id}/delhabit")
-    public Boolean delById(@PathVariable Long habit_id){
-        streakService.deletehabitById(habit_id);
+    public Boolean delById(@PathVariable Long id){
+        streakService.deletehabitById(id);
         return true;
     }
 }

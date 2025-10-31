@@ -62,6 +62,7 @@ compbtn.addEventListener("click", async () => {
     if (response.ok) {
         alert("Habit marked as complete!");
         window.close();
+        window.open("index.html");
     } else {
         alert("Failed to mark habit as complete.");
     }

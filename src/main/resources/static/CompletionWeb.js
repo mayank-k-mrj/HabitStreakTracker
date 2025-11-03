@@ -9,6 +9,8 @@ let habitDesc = document.querySelector('.habit-description');
 let current = document.querySelector('.streak-value');
 let longest = document.querySelector('#streak_long');
 let lastDate = document.querySelector('.info-value');
+let delbtn = document.querySelector('.delete-button');
+let delurl = "/delhabit";
 
 const urlParams = new URLSearchParams(window.location.search);
 const habitId = urlParams.get('id');
@@ -65,5 +67,26 @@ compbtn.addEventListener("click", async () => {
         window.open("index.html");
     } else {
         alert("Failed to mark habit as complete.");
+    }
+});
+
+let delstat = 0;
+delbtn.addEventListener("click", async () => {
+    if(delstat == 0){
+        delstat++;
+        alert("click again to delete");
+    }
+    else if(delstat == 1){
+        let delResponse = await fetch(url2 + habitId + delurl, {
+            method: "DELETE"
+        });
+        if(delResponse.ok){
+            console.log("Deleted Successfully");
+            window.close();
+            window.open("index.html");
+        }
+        else{
+            console.log("Something went wrong with deletion");
+        }
     }
 });

@@ -155,4 +155,28 @@ body {
 .navigation-link:hover {
     color: #1D3557;
 }
+.delete-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #E74C3C; /* Red color */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
 
+.delete-button:hover {
+    background-color: #C0392B; /* Darker red */
+}
+
+.delete-button:active {
+    transform: scale(0.98);
+}

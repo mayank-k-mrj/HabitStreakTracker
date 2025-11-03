@@ -143,6 +143,7 @@ public class StreakService_Imp implements StreakService{
     public Boolean deletehabitById(Long habit_id) {
         System.out.println("Trying to delete");
         streakEntryRepository.deleteByHabitId(habit_id);
+        habitsEntryRepository.deleteByHabitId(habit_id);
         if(streakEntryRepository.findById(habit_id).isPresent()){
             return false;
         }

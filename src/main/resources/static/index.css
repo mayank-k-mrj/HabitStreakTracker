@@ -172,6 +172,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    height: 25rem;
+    overflow: auto;
 }
 .habit-card {
     padding: 20px;

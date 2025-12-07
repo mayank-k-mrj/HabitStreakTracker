@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,12 @@ public class HabitStreakTrackerController {
     public List<HabitsEntity> getAllStreaks(Principal principal){
         String username = principal.getName();
         return habitsServices.getHabits(username);
+    }
+
+    @GetMapping("/habits/{user}/totalhabit")
+    public Integer totalHabit(Principal principal){
+        String username = principal.getName();
+        return habitsServices.TotalHabits(username);
     }
 
     @GetMapping("/habits/{habit_id}/habitsbyid")

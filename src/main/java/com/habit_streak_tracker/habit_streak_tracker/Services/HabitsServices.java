@@ -13,4 +13,5 @@ public interface HabitsServices {
     Boolean updatingFreqById(Long Id, HabitCreationRequest freq);
     List<HabitsEntity> getHabits(String user);
     Optional<HabitsEntity> findHabitsByHabitId(Long habit_id);
+    Integer TotalHabits(String username);
 }

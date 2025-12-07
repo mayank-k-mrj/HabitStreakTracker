@@ -20,4 +20,5 @@ public interface HabitsEntryRepository extends JpaRepository<HabitsEntity, Long>
     @Query(value = "DELETE FROM habits s WHERE s.habitid = :habitId",
             nativeQuery = true)
     void deleteByHabitId(@Param("habitId") Long habitId);
+    Integer countByUser_Username(String username);
 }

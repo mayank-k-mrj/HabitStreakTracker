@@ -99,6 +99,10 @@ public class Habits_Imp implements HabitsServices{
         return true;
     }
 
+    public Integer TotalHabits(String username){
+        return habitsEntryRepository.countByUser_Username(username);
+    }
+
     public List<HabitsEntity> getHabits(String username){
         return habitsEntryRepository.findByUser_Username(username);
     }

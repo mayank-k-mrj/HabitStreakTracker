@@ -11,7 +11,6 @@ let habitStreakElements = document.querySelectorAll('.habit-streak');
 let habitDescElements = document.querySelectorAll('.habit-detail');
 let url_str = "/streaks";
 let url_cur_str = "/currentStr";
-const allHabitCards = document.querySelectorAll('.habit-card');
 let habitTitle = document.querySelector('.habit-title');
 let comp_url = "/compstreak";
 let url_habitid = "/habitsbyid";
@@ -201,20 +200,24 @@ async function allhabits() {
         } else {
             console.error("Failed to fetch habits. Status:", habits.status);
         }
+        responsiveCards();
     } catch (error) {
         console.error("Error fetching all habits:", error);
     }
 }
+function responsiveCards(){
+    const allHabitCards = document.querySelectorAll('.habit-card');
+    allHabitCards.forEach(cards => {
+        cards.addEventListener("click", async () => {
+            const habitId = cards.dataset.habitId;
+            if (habitId) {
+                window.close();
+                window.open(`CompletionWeb.html?id=${habitId}`);
+            }
+        })
+    });
+}
 
-allHabitCards.forEach(cards => {
-    cards.addEventListener("click", async () => {
-        const habitId = cards.dataset.habitId;
-        if (habitId) {
-            window.close();
-            window.open(`CompletionWeb.html?id=${habitId}`);
-        }
-    })
-});
 
 allHabitCards.forEach(cards => {
     cards.addEventListener("mouseover", async () => {

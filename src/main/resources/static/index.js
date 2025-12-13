@@ -19,148 +19,136 @@ let streakday = document.querySelector('#streak-number');
 let details = document.querySelector('.streak-details');
 let todayDay = document.querySelectorAll('.day');
 
-function interactions(){
+// This makes the cards move a little when you touch them so they feel alive
+function interactions() {
     const interactiveCards = document.querySelectorAll('.card, .habit-card, .add-button');
     interactiveCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
+        card.onmouseenter = () => {
             card.style.transition = 'transform 0.2s ease-out';
             card.style.transform = 'translateY(-5px) scale(1.03)';
-        });
+        };
 
-        card.addEventListener('mouseleave', () => {
+        card.onmouseleave = () => {
             card.style.transform = 'translateY(0) scale(1)';
-        });
-        card.addEventListener('mousedown', () => {
+        };
+        card.onmousedown = () => {
             card.style.transition = 'transform 0.1s ease-in';
             card.style.transform = 'translateY(0) scale(0.98)';
-        });
+        };
 
-        card.addEventListener('mouseup', () => {
+        card.onmouseup = () => {
             card.style.transition = 'transform 0.1s ease-out';
             card.style.transform = 'translateY(-5px) scale(1.03)';
-        });
+        };
     });
-    }
+}
 
-addhabit.addEventListener("click", () => {
-    window.close();
-    window.open("HabitCreation.html");
-})
+// When you click add, I load the new page in THIS tab instead of opening a new one
+if (addhabit) {
+    addhabit.addEventListener("click", () => {
+        window.location.href = "HabitCreation.html";
+    });
+}
 
+// Start everything here: First I find the user, then I load their stuff
 user();
-
-async function NoOfTotalHabits(){
-    let tlHabit = await fetch(url2 + activeuser + url_totalHabits)
-    if (tlHabit.ok){
-        let totalNoText = await tlHabit.text();
-        let totalNo = parseInt(totalNoText);
-        console.log("Total Habits "+ totalNo);
-        let abc = "habit-card";
-        let color = ".green";
-        for(let i = 6; i < totalNo; i++){
-            console.log("Trying run new program");
-            if(color === ".green"){
-                let newCont = abc + color;
-                CopyDiv(newCont, "habits-grid");
-                color = ".blue";
-            }
-            else if(color === ".blue"){
-                let newCont = abc + color;
-                CopyDiv(newCont, "habits-grid");
-                color = ".purple";
-            }
-            else if(color === ".purple"){
-                let newCont = abc + color;
-                CopyDiv(newCont, "habits-grid");
-                color = ".teal";
-            }
-            else if(color === ".teal"){
-                let newCont = abc + color;
-                CopyDiv(newCont, "habits-grid");
-                color = ".indigo";
-            }
-            else if(color === ".indigo"){
-                let newCont = abc + color;
-                CopyDiv(newCont, "habits-grid");
-                color = ".orange";
-            }
-            else if(color === ".orange"){
-                let newCont = abc + color;
-                CopyDiv(newCont, "habits-grid");
-                color = ".green";
-            }
-        }
-    }
-    else{
-        console.log("Error finding total habits :(");
-    }
-}
-
-NoOfTotalHabits();
-
-function CopyDiv(HabitCard, ContainerClass) {
-    let newGrid = document.querySelector(`.${ContainerClass}`);
-    let newDiv = document.querySelector(`.${HabitCard}`);
-
-    if(!newGrid || !newDiv){
-        console.log("Error: newGrid  or newDiv not found.");
-    }
-
-    //Here I am cloning the Node(Tag) entirely.
-    const cloneDiv = newDiv.cloneNode(true);
-
-    //Increasing the number if elements in the section.
-    let allCardsInContainer = newGrid.querySelectorAll('.habit-card');
-    let newNum = allCardsInContainer.length + 1;
-
-    //Cloning the existing div.
-    let HabitNameInClone = cloneDiv.querySelector('.habit-name');
-    let HabitDetailInClone = cloneDiv.querySelector('.habit-detail');
-    let HabitStreakInClone = cloneDiv.querySelector('.habit-streak');
-
-    if(!HabitNameInClone || !HabitDetailInClone || !HabitStreakInClone){
-        console.log("Error: HabitName or HabitDetail or HabitStreak not found.");
-    }
-
-    //Creating new id for all cloned elements.
-    const HabitNameId = "habit-name" + newNum;
-    const HabitDetailId = "habit-detail" + newNum;
-    const HabitStreakId = "habit-streak" + newNum;
-
-    //Removing old Ids.
-    HabitNameInClone.removeAttribute('id');
-    HabitDetailInClone.removeAttribute('id');
-    HabitStreakInClone.removeAttribute('id');
-
-    //Setting new Ids to the elements.
-    HabitNameInClone.setAttribute('id', HabitNameId);
-    HabitDetailInClone.setAttribute('id', HabitDetailId);
-    HabitStreakInClone.setAttribute('id', HabitStreakId);
-
-    newGrid.appendChild(cloneDiv);
-
-    interactions();
-
-}
 
 async function user() {
     try {
-        let user = await fetch(url);
-        if (user.ok) {
-            let username = await user.text();
+        let userRes = await fetch(url);
+        if (userRes.ok) {
+            let username = await userRes.text();
             activeuser = username;
-            allhabits();
+            // Now that I know who the user is, I can check how many habits they have
+            NoOfTotalHabits();
         } else {
-            console.error("Failed to fetch user. Status:", user.status);
+            console.error("Failed to fetch user. Status:", userRes.status);
         }
     } catch (error) {
         console.error("Error fetching user:", error);
     }
 }
 
+// I check how many habits the user has. If they have a lot, I make more empty cards on the screen
+async function NoOfTotalHabits() {
+    if (!activeuser) return;
+
+    try {
+        let tlHabit = await fetch(url2 + activeuser + url_totalHabits);
+        if (tlHabit.ok) {
+            let totalNoText = await tlHabit.text();
+            let totalNo = parseInt(totalNoText);
+            console.log("Total Habits " + totalNo);
+
+            let abc = "habit-card";
+            let color = ".green";
+
+            // If they have more than 6 habits, I need to copy the card design and make new ones
+            for (let i = 6; i < totalNo; i++) {
+                if (color === ".green") {
+                    CopyDiv(abc + color, "habits-grid");
+                    color = ".blue";
+                } else if (color === ".blue") {
+                    CopyDiv(abc + color, "habits-grid");
+                    color = ".purple";
+                } else if (color === ".purple") {
+                    CopyDiv(abc + color, "habits-grid");
+                    color = ".teal";
+                } else if (color === ".teal") {
+                    CopyDiv(abc + color, "habits-grid");
+                    color = ".indigo";
+                } else if (color === ".indigo") {
+                    CopyDiv(abc + color, "habits-grid");
+                    color = ".orange";
+                } else if (color === ".orange") {
+                    CopyDiv(abc + color, "habits-grid");
+                    color = ".green";
+                }
+            }
+            // Now that the empty cards are built, I can fill them with text
+            allhabits();
+        } else {
+            console.log("Error finding total habits :(");
+        }
+    } catch (e) {
+        console.error("Error in NoOfTotalHabits", e);
+    }
+}
+
+// This is a helper tool. It takes one card and copies it so I don't have to write HTML for every single habit
+function CopyDiv(HabitCard, ContainerClass) {
+    let newGrid = document.querySelector(`.${ContainerClass}`);
+    let newDiv = document.querySelector(`.${HabitCard}`);
+
+    if (!newGrid || !newDiv) {
+        console.log("Error: newGrid or newDiv not found.");
+        return;
+    }
+
+    const cloneDiv = newDiv.cloneNode(true);
+    let allCardsInContainer = newGrid.querySelectorAll('.habit-card');
+    let newNum = allCardsInContainer.length + 1;
+
+    let HabitNameInClone = cloneDiv.querySelector('.habit-name');
+    let HabitDetailInClone = cloneDiv.querySelector('.habit-detail');
+    let HabitStreakInClone = cloneDiv.querySelector('.habit-streak');
+
+    // I need to give the new cards unique IDs or things might get messy
+    if (HabitNameInClone) {
+        HabitNameInClone.id = "habit-name" + newNum;
+        HabitNameInClone.innerText = "Loading...";
+    }
+    if (HabitDetailInClone) HabitDetailInClone.id = "habit-detail" + newNum;
+    if (HabitStreakInClone) HabitStreakInClone.id = "habit-streak" + newNum;
+
+    newGrid.appendChild(cloneDiv);
+    // Apply the movement animation to the new cards too
+    interactions();
+}
+
+// Now I go get the actual habit names and numbers and write them onto the cards
 async function allhabits() {
     if (!activeuser) {
-        console.error("No active user set. Cannot fetch habits.");
         return;
     }
 
@@ -168,91 +156,94 @@ async function allhabits() {
         let habits = await fetch(url2 + activeuser + url3);
         if (habits.ok) {
             console.log("Data fetched");
+            // I need to look for the cards again because I just added new ones in the previous function
             let habitNameElement = document.querySelectorAll('.habit-name');
             let habitStreakElement = document.querySelectorAll('.habit-streak');
             let habitDescElement = document.querySelectorAll('.habit-detail');
             const allHabitCard = document.querySelectorAll('.habit-card');
+
             let names = await habits.json();
+
             if (names.length > 0) {
                 for (let i = 0; i < names.length; i++) {
-                    if (i >= habitNameElement.length) break;
+                    if (i >= allHabitCard.length) break;
 
+                    // I'm saving the ID inside the card so I know which one is clicked later
                     allHabitCard[i].dataset.habitId = names[i].id;
 
-                    habitNameElement[i].innerText = names[i].name;
-                    habitDescElement[i].innerText = names[i].description;
+                    if(habitNameElement[i]) habitNameElement[i].innerText = names[i].name;
+                    if(habitDescElement[i]) habitDescElement[i].innerText = names[i].description;
 
+                    // Getting the streak number for each specific habit
                     let id = names[i].id;
                     try {
                         let streak = await fetch(url_streaks + id + url_str);
                         if (streak.ok) {
-                            console.log("Streak Fetched for habit ID:", id);
                             let streaks = await streak.json();
-                            habitStreakElement[i].innerText = streaks.currentStreak + "- Day Streak";
-                        } else {
-                            console.error("Failed to fetch streak for habit ID:", id, "Status:", streak.status);
+                            if(habitStreakElement[i]) habitStreakElement[i].innerText = streaks.currentStreak + "- Day Streak";
                         }
                     } catch (error) {
                         console.error("Error fetching streak for habit ID:", id, error);
                     }
                 }
             }
-        } else {
-            console.error("Failed to fetch habits. Status:", habits.status);
+            // Once data is loaded, I turn on the click and hover features
+            responsiveCards();
+            attachHoverDetails();
         }
-        responsiveCards();
     } catch (error) {
         console.error("Error fetching all habits:", error);
     }
 }
-function responsiveCards(){
+
+// This makes the cards clickable. I use location.href so it stays in the same tab.
+function responsiveCards() {
     const allHabitCards = document.querySelectorAll('.habit-card');
     allHabitCards.forEach(cards => {
-        cards.addEventListener("click", async () => {
+        cards.onclick = async () => {
             const habitId = cards.dataset.habitId;
             if (habitId) {
-                window.close();
-                window.open(`CompletionWeb.html?id=${habitId}`);
+                window.location.href = `CompletionWeb.html?id=${habitId}`;
             }
-        })
+        };
     });
 }
 
+// When you hover over a card, I show the specific streak info on the side
+function attachHoverDetails() {
+    const allHabitCards = document.querySelectorAll('.habit-card');
+    allHabitCards.forEach(cards => {
+        cards.onmouseover = async () => {
+            const habitId = cards.dataset.habitId;
+            if (!habitId) return;
 
-allHabitCards.forEach(cards => {
-    cards.addEventListener("mouseover", async () => {
-        const habitId = cards.dataset.habitId;
-        if (!habitId) return; // Don't fetch if there's no habit ID
+            try {
+                let CResponse = await fetch(url_streaks + habitId + url_cur_str);
+                if (CResponse.ok) {
+                    let current = await CResponse.json();
+                    if(streakday) streakday.innerText = current;
+                }
 
-        try {
-            // Fetch current streak
-            let CResponse = await fetch(url_streaks + habitId + url_cur_str);
-            if (CResponse.ok) {
-                let current = await CResponse.json();
-                streakday.innerText = current;
-            } else {
-                console.error("Failed to fetch current streak on mouseover. Status:", CResponse.status);
+                let DResponse = await fetch(url_streaks + habitId + url_habitid);
+                if (DResponse.ok) {
+                    let detailsDesc = await DResponse.json();
+                    if(details) details.innerText = detailsDesc.description;
+                }
+            } catch (error) {
+                console.error("Error on mouseover data fetch:", error);
             }
+        };
+    });
+}
 
-            // Fetch habit details
-            let DResponse = await fetch(url_streaks + habitId + url_habitid);
-            if (DResponse.ok) {
-                let detailsDesc = await DResponse.json();
-                details.innerText = detailsDesc.description;
-            } else {
-                console.error("Failed to fetch habit details on mouseover. Status:", DResponse.status);
-            }
-        } catch (error) {
-            console.error("Error on mouseover data fetch:", error);
-        }
-    })
-});
-
+// I check what day it is today and color that box blue
 const today = new Date();
 let day = today.getDay();
-console.log(day);
+console.log("Current Day Index:", day);
 
-if (todayDay[day]) {
+if (todayDay && todayDay.length > day && todayDay[day]) {
     todayDay[day].style.backgroundColor = "#3498DB";
     todayDay[day].style.color = "white";
 }
+
+interactions();

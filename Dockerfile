@@ -5,6 +5,7 @@ WORKDIR /app
 # Copy Maven project files (if using Maven Wrapper)
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
+RUN chmod +x mvnw
 RUN ./mvnw -q dependency:go-offline
 
 # Copy source code and build .jar

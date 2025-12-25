@@ -23,4 +23,4 @@ COPY --from=build /app/target/habit_streak_tracker-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 # Run Spring Boot app
-ENTRYPOINT ["java","-jar","habit_streak_tracker-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]

@@ -23,11 +23,13 @@ COPY --from=build /app/target/habit_streak_tracker-0.0.1-SNAPSHOT.jar app.jar
 # Expose App Port
 EXPOSE 8080
 
-# Run Spring Boot app using SHELL execution to expand variables
-# This bypasses application.properties and feeds the Render variables directly to Spring
+# Run Spring Boot app
+# Updated to include GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET
 ENTRYPOINT ["/bin/sh", "-c", "java -jar app.jar \
   --spring.datasource.url=jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE} \
   --spring.datasource.username=${MYSQLUSER} \
   --spring.datasource.password=${MYSQLPASSWORD} \
   --spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver \
+  --spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID} \
+  --spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET} \
   --server.port=${PORT}"]

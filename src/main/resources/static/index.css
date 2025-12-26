@@ -17,6 +17,11 @@
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
+/* Crucial for responsiveness */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-main);
@@ -40,17 +45,21 @@ body {
     background-color: var(--bg-card);
     border-radius: 16px;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 20px;
 }
 
 .logo {
     font-weight: 700;
     font-size: 1.5rem;
-    margin-right: 40px;
+    /* Removed fixed margin to let gap handle spacing */
+    white-space: nowrap;
 }
 
 .search-bar {
     position: relative;
     flex-grow: 1;
+    min-width: 200px; /* Prevents search bar from vanishing */
 }
 .search-bar i {
     position: absolute;
@@ -61,7 +70,7 @@ body {
 }
 .search-bar input {
     width: 100%;
-    max-width: 300px;
+    /* Removed max-width to allow filling space on mobile */
     padding: 10px 10px 10px 40px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -71,12 +80,13 @@ body {
 .main-menu {
     display: flex;
     gap: 30px;
-    margin: 0 auto;
+    margin: 0 auto; /* Keeps it centered if space permits */
 }
 .menu-link {
     text-decoration: none;
     color: var(--text-secondary);
     font-weight: 500;
+    white-space: nowrap;
 }
 .menu-link.active {
     color: var(--text-primary);
@@ -87,11 +97,12 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    display: block; /* Removes extra line height space */
 }
 
 /* --- Main Content --- */
 .main-content {
-    padding: 0 10px;
+    padding: 0 5px; /* Reduced padding for mobile screens */
 }
 
 .page-header {
@@ -99,9 +110,12 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows stacking on very small screens */
+    gap: 15px;
 }
 .page-header h1 {
     margin: 0;
+    font-size: 1.8rem;
 }
 .header-controls {
     display: flex;
@@ -115,11 +129,16 @@ body {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
+    transition: background-color 0.2s;
+}
+.header-controls .reset-button:hover {
+    background-color: #f8f9fa;
 }
 
 /* --- Main Grid Layout --- */
 .main-grid {
     display: grid;
+    /* 1fr 2fr 1fr is risky on small screens, fixed in media queries */
     grid-template-columns: 1fr 2fr 1fr;
     gap: 20px;
     margin-bottom: 20px;
@@ -153,6 +172,7 @@ body {
     color: var(--text-secondary);
     font-size: 0.9rem;
     flex-grow: 1;
+    margin: 10px 0;
 }
 .progress-circle {
     width: 50px;
@@ -163,7 +183,7 @@ body {
     display: grid;
     place-items: center;
     font-size: 1.5rem;
-    margin-top: 10px;
+    margin-top: auto; /* Pushes to bottom */
 }
 
 
@@ -172,15 +192,18 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    height: 25rem;
-    overflow: auto;
-    box-sizing: border-box;
-    padding: 15px;
+    height: 28rem; /* Slightly increased for better view */
+    overflow-y: auto; /* Explicit vertical scroll */
+    padding: 5px; /* Prevent shadow clipping */
 }
 .habit-card {
     padding: 20px;
     border-radius: 16px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px; /* Ensures cards don't shrink too much */
 }
 .habit-card i {
     font-size: 1.5rem;
@@ -189,21 +212,26 @@ body {
 .habit-name {
     font-weight: 600;
     font-size: 1.1rem;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 .habit-detail {
     font-size: 0.8rem;
-    opacity: 0.8;
+    opacity: 0.9;
+    margin-bottom: 10px;
+    display: block;
 }
 .habit-streak {
-    margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.2);
+    margin-top: auto;
+    background-color: rgba(255, 255, 255, 0.25);
     display: inline-block;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
+    width: fit-content;
 }
+
+/* Colors */
 .habit-card.green { background-color: var(--accent-green); }
 .habit-card.blue { background-color: var(--accent-blue); }
 .habit-card.purple { background-color: var(--accent-purple); }
@@ -219,18 +247,19 @@ body {
 }
 .week-tracker {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 15px;
 }
 .day {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: grid;
     place-items: center;
     font-weight: 500;
     color: var(--text-secondary);
     background-color: #f7f7f7;
+    font-size: 0.85rem;
 }
 
 .new-habit-prompt {
@@ -252,11 +281,15 @@ body {
     font-weight: 600;
     cursor: pointer;
     background-image: linear-gradient(90deg, var(--accent-red-start), var(--accent-red-end));
-    margin: 10px 0;
+    margin: 15px 0;
+    transition: transform 0.2s;
+}
+.add-button:hover {
+    transform: scale(1.02);
 }
 .prompt-text {
     font-weight: 600;
-    margin: 15px 0 5px;
+    margin: 10px 0 5px;
 }
 .prompt-subtext {
     color: var(--text-secondary);
@@ -288,6 +321,7 @@ body {
     background-color: #f0f7ff;
     padding: 6px 12px;
     border-radius: 8px;
+    font-size: 0.9rem;
 }
 
 /* Your Habits List */
@@ -305,8 +339,8 @@ body {
     font-weight: 500;
 }
 .your-habits-list li i {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     display: grid;
     place-items: center;
     background-color: #F0F7FF;
@@ -320,45 +354,93 @@ body {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    max-height: 250px;
+    object-fit: cover; /* Keeps it looking good if empty */
+    background-color: #f9f9f9; /* Placeholder if img src is empty */
 }
 
 /* --- Responsive Adjustments --- */
+
+/* Tablet / Medium Screens */
 @media (max-width: 1200px) {
     .main-grid {
+        /* Change from 3 columns to 2 columns */
         grid-template-columns: 1fr 1fr;
     }
+
     .habits-grid {
-        grid-column: span 2;
+        /* Make habits section span full width of the new grid */
+        grid-column: 1 / -1;
+        grid-row: 2; /* Move it below the top row */
     }
+
     .streak-card {
         grid-column: 1 / 2;
-        grid-row: 1 / 2;
+        grid-row: 1;
     }
+
     .side-panel {
         grid-column: 2 / 3;
-        grid-row: 1 / 2;
+        grid-row: 1;
     }
+}
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+    /* Top Nav Stack */
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .logo, .search-bar, .main-menu, .user-profile {
+        width: 100%;
+        margin: 0;
+    }
+    .search-bar input {
+        width: 100%; /* Full width search on mobile */
+    }
+    .main-menu {
+        justify-content: space-between; /* Spread menu items */
+    }
+    .user-profile {
+        display: none; /* Often better to hide on mobile or move into menu */
+    }
+
+    /* Main Grid Stack */
+    .main-grid {
+        grid-template-columns: 1fr; /* Single column stack */
+        gap: 15px;
+    }
+
+    /* Reset grid placements for single column flow */
+    .streak-card, .side-panel, .habits-grid {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    /* Habits Grid Inside */
+    .habits-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on large phones */
+        height: auto; /* Let it expand naturally on mobile */
+        max-height: 400px; /* But keep a cap so it scrolls */
+    }
+
+    /* Lower Deck Stack */
     .lower-deck {
         grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 768px) {
-    .top-nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .main-menu {
-        order: 3;
-    }
-    .main-grid {
-        grid-template-columns: 1fr;
-    }
+/* Small Phones (Portrait) */
+@media (max-width: 480px) {
     .habits-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-column: auto;
+        grid-template-columns: 1fr; /* Single column habits on very small screens */
     }
-    .streak-card, .side-panel {
-        grid-column: auto;
+    .menu-link {
+        font-size: 0.9rem;
+    }
+    .card {
+        padding: 15px;
     }
 }

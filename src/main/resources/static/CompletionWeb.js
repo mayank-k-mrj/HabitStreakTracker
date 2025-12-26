@@ -1,5 +1,5 @@
 const compbtn = document.querySelector('.complete-button');
-const url2 = "http://localhost:8080/hst/habits/";
+const url2 = "/hst/habits/";
 const comp_url = "/compstreak";
 const url3 = "/habitsbyid";
 const url4 = "/streaks";

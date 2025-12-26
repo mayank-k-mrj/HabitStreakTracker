@@ -4,7 +4,7 @@ let desc = document.querySelector('#habit-description');
 let freq = document.querySelector('#habit-frequency');
 let stdate = document.querySelector('#start-date');
 let stat = document.querySelector('.stat');
-let url = "http://localhost:8080/hst/habits";
+let url = "/hst/habits";
 submitbtn.addEventListener("click", async (event) => {
     event.preventDefault();
     if(name.value != "" && desc.value != "" && stdate.value != ""){

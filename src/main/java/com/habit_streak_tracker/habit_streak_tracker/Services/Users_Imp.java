@@ -1,6 +1,7 @@
 package com.habit_streak_tracker.habit_streak_tracker.Services;
 
 import com.habit_streak_tracker.habit_streak_tracker.Model.UsersEntity;
+import com.habit_streak_tracker.habit_streak_tracker.Repository.ProfileEntryRepository;
 import com.habit_streak_tracker.habit_streak_tracker.Repository.UserEntryRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

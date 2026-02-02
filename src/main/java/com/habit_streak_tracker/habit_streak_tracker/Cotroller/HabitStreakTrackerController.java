@@ -1,14 +1,14 @@
 package com.habit_streak_tracker.habit_streak_tracker.Cotroller;
 
 import com.habit_streak_tracker.habit_streak_tracker.DTO.HabitCreationRequest;
+import com.habit_streak_tracker.habit_streak_tracker.DTO.ProfileFetchingDTO;
 import com.habit_streak_tracker.habit_streak_tracker.DTO.StreakCreationRequest;
 import com.habit_streak_tracker.habit_streak_tracker.DTO.StreakDTO;
 import com.habit_streak_tracker.habit_streak_tracker.Model.HabitsEntity;
+import com.habit_streak_tracker.habit_streak_tracker.Model.ProfileEntity;
 import com.habit_streak_tracker.habit_streak_tracker.Model.StreaksEntity;
 import com.habit_streak_tracker.habit_streak_tracker.Model.UsersEntity;
-import com.habit_streak_tracker.habit_streak_tracker.Services.HabitsServices;
-import com.habit_streak_tracker.habit_streak_tracker.Services.StreakService;
-import com.habit_streak_tracker.habit_streak_tracker.Services.UsersServices;
+import com.habit_streak_tracker.habit_streak_tracker.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,7 +38,10 @@ public class HabitStreakTrackerController {
         newUser.setEmail(entries.getEmail());
         String hashedPassword = passwordEncoder.encode(entries.getPassword());
         newUser.setPassword(hashedPassword);
+
         usersServices.register(newUser);
+
+        profileService.CreateProfileRow(entries.getUsername());
 
         return true;
     }
@@ -136,4 +139,40 @@ public class HabitStreakTrackerController {
         streakService.deletehabitById(id);
         return true;
     }
+
+    //-----------------------------------------------------------------------------------------------------------------//
+    //Creating endpoints for editing profile.
+
+    @Autowired
+    private ProfileService profileService;
+
+    //Healthcheck Endpoint
+    @GetMapping("/profile")
+    public String profile(){
+        return "Profile Editing";
+    }
+
+    //Endpoint for setting the data in database
+    @PutMapping("/profile/{username}/editdata")
+    public ResponseEntity<String> EditData(@RequestBody ProfileEntity data, Principal principal, @PathVariable String username){
+        String user = principal.getName();
+
+        profileService.SetData(user, data);
+        return ResponseEntity.ok("User : "+user + " Phone : "+data.getPhone() + " DOB : "+data.getDob() + " Bio : "+data.getBio() + "Profile Pic No. : "+data.getPropic());
+    }
+
+    //Endpoint for Fetching the Edited profile data
+    @GetMapping("/profile/getphone")
+    public String FetchPhone(Principal principal){
+        String username = principal.getName();
+        return profileService.FetchPhone(username);
+    }
+
+    //Endpoint for Fetching Entire user profile row
+    @GetMapping("/profile/getprofile")
+    public ProfileFetchingDTO FetchProfile(Principal principal){
+        String username = principal.getName();
+        return profileService.FetchData(username);
+    }
+
 }

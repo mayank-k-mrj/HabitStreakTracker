@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f8ff;
+}
+
+/* Images */
+.img1{
+  width: 2.8vw;
+}
+.img2{
+  width: 7vw;
+}
+.img3{
+  width: 9vw;
+}
+
+/* Navbar */
+.navbar {
+  margin: 20px 20px 0px 20px;
+  background: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  color: #1D3557;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #555;
+}
+
+.navbar .active {
+  font-weight: bold;
+  color: #1f6fff;
+}
+
+.nav-avatar {
+  border-radius: 50%;
+}
+
+/* Layout */
+.dashboard {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.profile-mini {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-mini img {
+  border-radius: 50%;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sidebar li:hover,
+.sidebar .active {
+  background: #eaf1ff;
+  color: #1f6fff;
+}
+
+.sidebar .danger {
+  color: #ff4d4f;
+}
+
+/* Content */
+.content {
+  flex: 1;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-card img {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-card button {
+  margin-top: 10px;
+  background: #ff6b5c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+/* Inputs */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+label{
+  font-weight: 500;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Buttons */
+button.primary {
+  background: #1f6fff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #eee;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+button.danger {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Danger Card */
+.danger-card {
+  border: 1px solid #ffe1e1;
+}

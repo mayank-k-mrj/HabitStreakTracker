@@ -40,16 +40,10 @@ public class ProfileService_Imp implements ProfileService{
         }
     }
 
-    public String FetchPhone(String username){
-        ProfileEntity profile = profileEntryRepository.findByUser_Username(username)
-                .orElseThrow(() -> new RuntimeException("No user found with name : "+username));
-
-        return profile.getPhone();
-    }
-
     //Saving all new data for user profile.
     public Boolean SetData(String username, ProfileEntity profileData) {
         try {
+            String nickname = profileData.getNickname();
             String phone = profileData.getPhone();
             LocalDate dob = profileData.getDob();
             String bio = profileData.getBio();
@@ -58,6 +52,7 @@ public class ProfileService_Imp implements ProfileService{
             ProfileEntity existinguser = profileEntryRepository.findByUser_Username(username)
                     .orElseThrow(() -> new RuntimeException("User with username " + username + " doesn't exists"));
 
+            existinguser.setNickname(nickname);
             existinguser.setPhone(phone);
             existinguser.setDob(dob);
             existinguser.setBio(bio);
@@ -80,6 +75,7 @@ public class ProfileService_Imp implements ProfileService{
         return new ProfileFetchingDTO(
                 profile.getId(),
                 profile.getUser().getUsername(),
+                profile.getNickname(),
                 profile.getPhone(),
                 profile.getDob(),
                 profile.getBio(),

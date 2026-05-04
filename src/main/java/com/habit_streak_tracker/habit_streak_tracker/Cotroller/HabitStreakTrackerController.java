@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500", allowCredentials = "true")
 @RequestMapping("/hst")
 public class HabitStreakTrackerController {
 
@@ -153,19 +154,12 @@ public class HabitStreakTrackerController {
     }
 
     //Endpoint for setting the data in database
-    @PutMapping("/profile/{username}/editdata")
-    public ResponseEntity<String> EditData(@RequestBody ProfileEntity data, Principal principal, @PathVariable String username){
+    @PutMapping("/profile/editdata")
+    public ResponseEntity<String> EditData(@RequestBody ProfileEntity data, Principal principal){
         String user = principal.getName();
 
         profileService.SetData(user, data);
         return ResponseEntity.ok("User : "+user + " Phone : "+data.getPhone() + " DOB : "+data.getDob() + " Bio : "+data.getBio() + "Profile Pic No. : "+data.getPropic());
-    }
-
-    //Endpoint for Fetching the Edited profile data
-    @GetMapping("/profile/getphone")
-    public String FetchPhone(Principal principal){
-        String username = principal.getName();
-        return profileService.FetchPhone(username);
     }
 
     //Endpoint for Fetching Entire user profile row

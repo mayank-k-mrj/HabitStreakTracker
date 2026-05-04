@@ -11,8 +11,6 @@ public interface ProfileService {
 
     //Creating new profile row for user every user
     public String CreateProfileRow(String username);
-    //For fetching phone no of a user.
-    public String FetchPhone(String username);
 
     public Boolean SetData(String username, ProfileEntity profile);
     public ProfileFetchingDTO FetchData(String username);

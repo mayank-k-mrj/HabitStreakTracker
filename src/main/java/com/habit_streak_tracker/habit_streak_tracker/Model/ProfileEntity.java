@@ -23,11 +23,13 @@ public class ProfileEntity {
     @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
     UsersEntity user;
 
+    @Column(name = "nickname", nullable = false)
+    private String nickname = "XYZ";
+
     @Column(name = "phone", nullable = false)
     private String phone = "+91 0000000000";
 
     @Column(name = "dob", nullable = false)
-    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dob = LocalDate.of(2000, 1, 1);
 
     @Column(name = "bio", nullable = true)
@@ -43,21 +45,26 @@ public class ProfileEntity {
         this.user = user;
     }
 
-    public ProfileEntity(String phone, LocalDate dob, String bio) {
+    public ProfileEntity(String nickname, String phone, LocalDate dob, String bio) {
+        this.nickname = nickname;
         this.phone = phone;
         this.dob = dob;
         this.bio = bio;
     }
 
-    public ProfileEntity(String phone, LocalDate dob, String bio, Integer propic){
+    public ProfileEntity(String nickname, String phone, LocalDate dob, String bio, Integer propic){
+        this.nickname = nickname;
         this.phone = phone;
         this.dob = dob;
         this.bio = bio;
         this.propic = propic;
     }
 
-    public ProfileEntity(UsersEntity user, String phone, LocalDate dob, String bio, Integer propic) {
+
+
+    public ProfileEntity(UsersEntity user, String nickname, String phone, LocalDate dob, String bio, Integer propic) {
         this.user = user;
+        this.nickname = nickname;
         this.phone = phone;
         this.dob = dob;
         this.bio = bio;
@@ -78,6 +85,14 @@ public class ProfileEntity {
 
     public void setUser(UsersEntity user) {
         this.user = user;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPhone() {

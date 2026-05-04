@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Profile – Ignite Habits</title>
+    <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+
+<!-- Top Navbar -->
+<header class="navbar">
+    <h2>Ignite Habits</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Analytics</a>
+        <img class="img1" src="1.png" class="nav-avatar">
+    </nav>
+</header>
+
+<main class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="profile-mini">
+            <img class="img2" src="1.png">
+            <h3>ABC</h3>
+            <p>@ignite_user</p>
+        </div>
+
+        <ul>
+            <li class="active">Account Settings</li>
+            <li>Security Settings</li>
+            <li>Subscription</li>
+            <li class="danger">Logout</li>
+        </ul>
+    </aside>
+
+    <!-- Content -->
+    <section class="content">
+
+        <!-- Profile Card -->
+        <div class="card profile-card">
+            <img class="img3" src="1.png">
+            <h2>ABC</h2>
+            <p>Building habits, one day at a time 🔥</p>
+        </div>
+
+        <!-- Info + Forms -->
+        <div class="grid">
+
+            <div class="card">
+                <h3>Personal Information</h3>
+                <div class="info">
+                    <span>📞 Phone</span>
+                    <p>+91 98765 43210</p>
+                </div>
+                <div class="info">
+                    <span>📧 Email</span>
+                    <p>mayank@email.com</p>
+                </div>
+                <div class="info">
+                    <span>🎂 DOB</span>
+                    <p>12 Jan 2002</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Edit Profile</h3>
+                <label for="Nickname">Nickname</label>
+                <input class="edit-name" type="text" placeholder="Nickname" required>
+                <label for="Contact">Contact</label>
+                <input class="edit-phone" type="text" placeholder="Phone" required>
+                <label for="DOB">Date of Birth</label>
+                <input class="edit-date" type="date" placeholder="DOB" required>
+                <label for="Bio">Bio</label>
+                <textarea class="edit-bio" placeholder="Bio">Building habits, one day at a time 🔥</textarea>
+                <button class="primary">Save Changes</button>
+            </div>
+
+            <div class="card">
+                <h3>Security Settings</h3>
+                <input type="password" placeholder="New Password">
+                <input type="password" placeholder="Confirm Password">
+                <button class="primary">Update Password</button>
+            </div>
+
+            <div class="card danger-card">
+                <h3>Account Actions</h3>
+                <button class="secondary">Deactivate Account</button>
+                <button class="danger">Delete Account</button>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+</body>
+<script src="profile.js"></script>
+</html>

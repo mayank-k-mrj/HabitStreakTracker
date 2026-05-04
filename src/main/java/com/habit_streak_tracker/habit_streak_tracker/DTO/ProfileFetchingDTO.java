@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public record ProfileFetchingDTO(
         Long id,
         String user,
+        String nickname,
         String phone,
         LocalDate dob,
         String bio,

@@ -1,4 +1,5 @@
 let addhabit = document.querySelector('.add-button');
+let resBtn = document.querySelector('.reset-button');
 let url = "/hst/user";
 let url2 = "/hst/habits/";
 let url_getid = "/hst/habits/ids";
@@ -42,6 +43,10 @@ function interactions() {
         };
     });
 }
+
+//resBtn.addEventListner("click", () => {
+//    window.location.reload();
+//})
 
 // When you click add, I load the new page in THIS tab instead of opening a new one
 if (addhabit) {
